@@ -1,27 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Screenshot Beautifier - Futuristic Editor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="rotate-glow-loader"></div>
+    </div>
 
-    <meta property="og:title" content="b548cec7-de2f-43c0-9220-366fefa30fde" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="header-title">Screenshot Beautifier</h1>
+                    <p class="header-subtitle">Transform your screenshots into stunning visuals</p>
+                </div>
+                <div class="header-right">
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span class="status-text">Ready</span>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section id="upload-section" class="upload-section">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <h2 class="upload-title">Drop your screenshot here</h2>
+                        <p class="upload-description">or click to browse files</p>
+                        <div class="upload-formats">
+                            <span class="format-badge">PNG</span>
+                            <span class="format-badge">JPG</span>
+                            <span class="format-badge">JPEG</span>
+                        </div>
+                    </div>
+                    <input type="file" id="file-input" class="file-input" accept="image/*">
+                </div>
+            </section>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+            <!-- Preview Section -->
+            <section id="preview-section" class="preview-section hidden">
+                <div class="preview-container">
+                    <div class="preview-wrapper" id="preview-wrapper">
+                        <img id="preview-image" class="preview-image" alt="Preview">
+                    </div>
+                </div>
+
+                <!-- Tools Panel -->
+                <div class="tools-panel">
+                    <div class="tools-header">
+                        <h3 class="tools-title">Styling Options</h3>
+                        <button id="reset-btn" class="reset-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                <path d="M3 3v5h5"/>
+                            </svg>
+                            Reset
+                        </button>
+                    </div>
+
+                    <!-- Background Presets -->
+                    <div class="control-group">
+                        <label class="control-label">Background Presets</label>
+                        <div class="preset-grid">
+                            <button class="preset-btn active" data-preset="gradient">
+                                <div class="preset-preview gradient-bg"></div>
+                                <span>Gradient</span>
+                            </button>
+                            <button class="preset-btn" data-preset="glass">
+                                <div class="preset-preview glass-bg"></div>
+                                <span>Glass</span>
+                            </button>
+                            <button class="preset-btn" data-preset="solid">
+                                <div class="preset-preview solid-bg"></div>
+                                <span>Solid</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Corner Radius -->
+                    <div class="control-group">
+                        <label class="control-label">Corner Radius</label>
+                        <div class="slider-container">
+                            <input type="range" id="corner-radius" class="slider" min="0" max="50" value="20">
+                            <div class="slider-value">
+                                <span id="corner-radius-value">20</span>px
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shadow Intensity -->
+                    <div class="control-group">
+                        <label class="control-label">Shadow Intensity</label>
+                        <div class="slider-container">
+                            <input type="range" id="shadow-intensity" class="slider" min="0" max="100" value="50">
+                            <div class="slider-value">
+                                <span id="shadow-intensity-value">50</span>%
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Background Blur -->
+                    <div class="control-group">
+                        <label class="control-label">Background Blur</label>
+                        <div class="slider-container">
+                            <input type="range" id="background-blur" class="slider" min="0" max="20" value="10">
+                            <div class="slider-value">
+                                <span id="background-blur-value">10</span>px
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Button -->
+                    <button id="export-btn" class="export-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Export Image
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Hidden Canvas for Export -->
+    <canvas id="export-canvas" style="display: none;"></canvas>
+
+    <script src="script.js"></script>
+</body>
 </html>
