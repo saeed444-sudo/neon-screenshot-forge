@@ -82,9 +82,25 @@
                     <div class="control-group">
                         <label class="control-label">Background Presets</label>
                         <div class="preset-grid">
-                            <button class="preset-btn active" data-preset="gradient">
-                                <div class="preset-preview gradient-bg"></div>
-                                <span>Gradient</span>
+                            <button class="preset-btn active" data-preset="aurora">
+                                <div class="preset-preview aurora-bg"></div>
+                                <span>Aurora</span>
+                            </button>
+                            <button class="preset-btn" data-preset="sunset">
+                                <div class="preset-preview sunset-bg"></div>
+                                <span>Sunset</span>
+                            </button>
+                            <button class="preset-btn" data-preset="ocean">
+                                <div class="preset-preview ocean-bg"></div>
+                                <span>Ocean</span>
+                            </button>
+                            <button class="preset-btn" data-preset="forest">
+                                <div class="preset-preview forest-bg"></div>
+                                <span>Forest</span>
+                            </button>
+                            <button class="preset-btn" data-preset="neon">
+                                <div class="preset-preview neon-bg"></div>
+                                <span>Neon</span>
                             </button>
                             <button class="preset-btn" data-preset="glass">
                                 <div class="preset-preview glass-bg"></div>
@@ -94,6 +110,127 @@
                                 <div class="preset-preview solid-bg"></div>
                                 <span>Solid</span>
                             </button>
+                            <button class="preset-btn" data-preset="custom">
+                                <div class="preset-preview custom-bg"></div>
+                                <span>Custom</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Colors -->
+                    <div class="control-group" id="custom-colors" style="display: none;">
+                        <label class="control-label">Custom Background</label>
+                        <div class="color-controls">
+                            <div class="color-input-group">
+                                <label for="bg-color1">Color 1</label>
+                                <input type="color" id="bg-color1" class="color-input" value="#6366f1">
+                            </div>
+                            <div class="color-input-group">
+                                <label for="bg-color2">Color 2</label>
+                                <input type="color" id="bg-color2" class="color-input" value="#3b82f6">
+                            </div>
+                            <div class="gradient-direction">
+                                <label for="gradient-angle">Gradient Angle</label>
+                                <input type="range" id="gradient-angle" class="slider" min="0" max="360" value="135">
+                                <span id="gradient-angle-value">135°</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Effects -->
+                    <div class="control-group">
+                        <label class="control-label">Image Effects</label>
+                        <div class="effects-grid">
+                            <div class="effect-control">
+                                <label for="brightness">Brightness</label>
+                                <input type="range" id="brightness" class="slider" min="0" max="200" value="100">
+                                <span id="brightness-value">100%</span>
+                            </div>
+                            <div class="effect-control">
+                                <label for="contrast">Contrast</label>
+                                <input type="range" id="contrast" class="slider" min="0" max="200" value="100">
+                                <span id="contrast-value">100%</span>
+                            </div>
+                            <div class="effect-control">
+                                <label for="saturation">Saturation</label>
+                                <input type="range" id="saturation" class="slider" min="0" max="200" value="100">
+                                <span id="saturation-value">100%</span>
+                            </div>
+                            <div class="effect-control">
+                                <label for="blur">Blur</label>
+                                <input type="range" id="blur" class="slider" min="0" max="10" value="0">
+                                <span id="blur-value">0px</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transform Controls -->
+                    <div class="control-group">
+                        <label class="control-label">Transform</label>
+                        <div class="transform-controls">
+                            <div class="transform-control">
+                                <label for="rotation">Rotation</label>
+                                <input type="range" id="rotation" class="slider" min="-45" max="45" value="0">
+                                <span id="rotation-value">0°</span>
+                            </div>
+                            <div class="transform-control">
+                                <label for="scale">Scale</label>
+                                <input type="range" id="scale" class="slider" min="50" max="150" value="100">
+                                <span id="scale-value">100%</span>
+                            </div>
+                            <div class="transform-control">
+                                <label for="opacity">Opacity</label>
+                                <input type="range" id="opacity" class="slider" min="0" max="100" value="100">
+                                <span id="opacity-value">100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Shadow -->
+                    <div class="control-group">
+                        <label class="control-label">Advanced Shadow</label>
+                        <div class="shadow-controls">
+                            <div class="shadow-control">
+                                <label for="shadow-x">Shadow X</label>
+                                <input type="range" id="shadow-x" class="slider" min="-50" max="50" value="0">
+                                <span id="shadow-x-value">0px</span>
+                            </div>
+                            <div class="shadow-control">
+                                <label for="shadow-y">Shadow Y</label>
+                                <input type="range" id="shadow-y" class="slider" min="-50" max="50" value="25">
+                                <span id="shadow-y-value">25px</span>
+                            </div>
+                            <div class="shadow-control">
+                                <label for="shadow-spread">Shadow Spread</label>
+                                <input type="range" id="shadow-spread" class="slider" min="0" max="100" value="50">
+                                <span id="shadow-spread-value">50px</span>
+                            </div>
+                            <div class="color-input-group">
+                                <label for="shadow-color">Shadow Color</label>
+                                <input type="color" id="shadow-color" class="color-input" value="#000000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frame & Border -->
+                    <div class="control-group">
+                        <label class="control-label">Frame & Border</label>
+                        <div class="frame-controls">
+                            <div class="frame-control">
+                                <label for="border-width">Border Width</label>
+                                <input type="range" id="border-width" class="slider" min="0" max="20" value="0">
+                                <span id="border-width-value">0px</span>
+                            </div>
+                            <div class="color-input-group">
+                                <label for="border-color">Border Color</label>
+                                <input type="color" id="border-color" class="color-input" value="#ffffff">
+                            </div>
+                            <div class="frame-presets">
+                                <button class="frame-preset-btn" data-frame="none">None</button>
+                                <button class="frame-preset-btn" data-frame="modern">Modern</button>
+                                <button class="frame-preset-btn" data-frame="classic">Classic</button>
+                                <button class="frame-preset-btn" data-frame="neon">Neon</button>
+                            </div>
                         </div>
                     </div>
 
@@ -130,15 +267,53 @@
                         </div>
                     </div>
 
-                    <!-- Export Button -->
-                    <button id="export-btn" class="export-btn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7,10 12,15 17,10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        Export Image
-                    </button>
+                    <!-- Export Options -->
+                    <div class="control-group">
+                        <label class="control-label">Export Settings</label>
+                        <div class="export-settings">
+                            <div class="export-control">
+                                <label for="export-format">Format</label>
+                                <select id="export-format" class="export-select">
+                                    <option value="png">PNG</option>
+                                    <option value="jpg">JPG</option>
+                                    <option value="webp">WebP</option>
+                                </select>
+                            </div>
+                            <div class="export-control">
+                                <label for="export-quality">Quality</label>
+                                <input type="range" id="export-quality" class="slider" min="0.1" max="1" step="0.1" value="0.9">
+                                <span id="export-quality-value">90%</span>
+                            </div>
+                            <div class="export-control">
+                                <label for="export-scale">Scale</label>
+                                <select id="export-scale" class="export-select">
+                                    <option value="1">1x</option>
+                                    <option value="2" selected>2x</option>
+                                    <option value="3">3x</option>
+                                    <option value="4">4x</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Buttons -->
+                    <div class="export-buttons">
+                        <button id="export-btn" class="export-btn primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Export Image
+                        </button>
+                        <button id="copy-btn" class="export-btn secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                            </svg>
+                            Copy to Clipboard
+                        </button>
+                    </div>
                 </div>
             </section>
         </main>

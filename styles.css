@@ -336,7 +336,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Preset Grid */
 .preset-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
 }
 
@@ -374,6 +374,27 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid hsl(var(--border));
 }
 
+/* Background Presets */
+.aurora-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.sunset-bg {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+}
+
+.ocean-bg {
+    background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+}
+
+.forest-bg {
+    background: linear-gradient(135deg, #2d5016 0%, #3a6b1c 100%);
+}
+
+.neon-bg {
+    background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+}
+
 .gradient-bg {
     background: var(--gradient-primary);
 }
@@ -385,6 +406,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .solid-bg {
     background: hsl(var(--card));
+}
+
+.custom-bg {
+    background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
 }
 
 /* Slider */
@@ -500,9 +525,319 @@ h1, h2, h3, h4, h5, h6 {
     .preset-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .effects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .frame-presets {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Color Controls */
+.color-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.color-input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.color-input-group label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    min-width: 80px;
+}
+
+.color-input {
+    width: 50px;
+    height: 35px;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.color-input:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: var(--shadow-glow);
+}
+
+.gradient-direction {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gradient-direction label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    min-width: 80px;
+}
+
+.gradient-direction input {
+    flex: 1;
+}
+
+.gradient-direction span {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground));
+    min-width: 40px;
+}
+
+/* Effects Grid */
+.effects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.effect-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.effect-control label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    font-weight: 500;
+}
+
+.effect-control input {
+    width: 100%;
+}
+
+.effect-control span {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+}
+
+/* Transform Controls */
+.transform-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.transform-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.transform-control label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    min-width: 70px;
+}
+
+.transform-control input {
+    flex: 1;
+}
+
+.transform-control span {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground));
+    min-width: 50px;
+    text-align: right;
+}
+
+/* Shadow Controls */
+.shadow-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.shadow-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.shadow-control label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    min-width: 80px;
+}
+
+.shadow-control input {
+    flex: 1;
+}
+
+.shadow-control span {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground));
+    min-width: 50px;
+    text-align: right;
+}
+
+/* Frame Controls */
+.frame-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.frame-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.frame-control label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    min-width: 80px;
+}
+
+.frame-control input {
+    flex: 1;
+}
+
+.frame-control span {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground));
+    min-width: 50px;
+    text-align: right;
+}
+
+.frame-presets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.frame-preset-btn {
+    padding: 0.5rem;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    color: hsl(var(--foreground));
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: inherit;
+}
+
+.frame-preset-btn:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: var(--shadow-glow);
+}
+
+.frame-preset-btn.active {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Export Controls */
+.export-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.export-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.export-control label {
+    font-size: 0.8rem;
+    color: hsl(var(--foreground));
+    min-width: 60px;
+}
+
+.export-select {
+    flex: 1;
+    padding: 0.5rem;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    color: hsl(var(--foreground));
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.export-select:hover {
+    border-color: hsl(var(--primary));
+}
+
+.export-select:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: var(--shadow-glow);
+}
+
+.export-control input {
+    flex: 1;
+}
+
+.export-control span {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground));
+    min-width: 50px;
+    text-align: right;
+}
+
+/* Export Buttons */
+.export-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.export-btn.primary {
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    border: none;
+}
+
+.export-btn.secondary {
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+}
+
+.export-btn.secondary:hover {
+    background: hsl(var(--accent));
+    border-color: hsl(var(--primary));
 }
 
 /* Background Styles */
+.bg-aurora {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-sunset {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+}
+
+.bg-ocean {
+    background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+}
+
+.bg-forest {
+    background: linear-gradient(135deg, #2d5016 0%, #3a6b1c 100%);
+}
+
+.bg-neon {
+    background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+}
+
 .bg-gradient {
     background: var(--gradient-primary);
 }
@@ -514,4 +849,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-solid {
     background: hsl(var(--card));
+}
+
+.bg-custom {
+    background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
 }
