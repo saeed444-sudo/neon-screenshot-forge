@@ -122,8 +122,28 @@ const Index = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const img = new Image();
-    img.onload = () => {
+    try {
+      // Create a new image element and load the file directly
+      const img = new Image();
+      
+      // Create a promise to handle image loading
+      const imageLoadPromise = new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error('Failed to load image'));
+        
+        // Load image from file directly instead of object URL
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (e.target?.result) {
+            img.src = e.target.result as string;
+          }
+        };
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsDataURL(imageState.file!);
+      });
+
+      await imageLoadPromise;
+
       // Set canvas to full screen dimensions (1920x1080 for HD)
       canvas.width = 1920;
       canvas.height = 1080;
@@ -149,6 +169,7 @@ const Index = () => {
       // Apply background
       if (imageState.backgroundType === 'gradient') {
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Parse the gradient from customBackground
         gradient.addColorStop(0, '#667eea');
         gradient.addColorStop(1, '#764ba2');
         ctx.fillStyle = gradient;
@@ -187,15 +208,21 @@ const Index = () => {
       // Download
       const link = document.createElement('a');
       link.download = 'beautified-screenshot.png';
-      link.href = canvas.toDataURL();
+      link.href = canvas.toDataURL('image/png', 1.0);
       link.click();
       
       toast({
         title: "Screenshot exported!",
-        description: "Your beautified image has been downloaded.",
+        description: "Your beautified image has been downloaded in full HD.",
       });
-    };
-    img.src = imageState.url;
+    } catch (error) {
+      console.error('Export failed:', error);
+      toast({
+        title: "Export failed",
+        description: "Failed to load image for export. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
