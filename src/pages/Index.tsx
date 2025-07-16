@@ -124,10 +124,24 @@ const Index = () => {
 
     const img = new Image();
     img.onload = () => {
-      // Set canvas dimensions
-      const padding = 80;
-      canvas.width = img.width + padding * 2;
-      canvas.height = img.height + padding * 2;
+      // Set canvas to full screen dimensions (1920x1080 for HD)
+      canvas.width = 1920;
+      canvas.height = 1080;
+      
+      // Calculate image scaling to fit nicely within full screen
+      const maxImageWidth = canvas.width * 0.8; // Use 80% of screen width
+      const maxImageHeight = canvas.height * 0.8; // Use 80% of screen height
+      
+      const scaleX = maxImageWidth / img.width;
+      const scaleY = maxImageHeight / img.height;
+      const scale = Math.min(scaleX, scaleY);
+      
+      const scaledWidth = img.width * scale;
+      const scaledHeight = img.height * scale;
+      
+      // Center the image on the canvas
+      const x = (canvas.width - scaledWidth) / 2;
+      const y = (canvas.height - scaledHeight) / 2;
 
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -150,25 +164,25 @@ const Index = () => {
       ctx.shadowOffsetY = imageState.shadowIntensity / 2;
 
       // Draw rounded rectangle for image
-      const x = padding;
-      const y = padding;
+      const imageX = x;
+      const imageY = y;
       const radius = imageState.cornerRadius;
       
       ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.lineTo(x + img.width - radius, y);
-      ctx.quadraticCurveTo(x + img.width, y, x + img.width, y + radius);
-      ctx.lineTo(x + img.width, y + img.height - radius);
-      ctx.quadraticCurveTo(x + img.width, y + img.height, x + img.width - radius, y + img.height);
-      ctx.lineTo(x + radius, y + img.height);
-      ctx.quadraticCurveTo(x, y + img.height, x, y + img.height - radius);
-      ctx.lineTo(x, y + radius);
-      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.moveTo(imageX + radius, imageY);
+      ctx.lineTo(imageX + scaledWidth - radius, imageY);
+      ctx.quadraticCurveTo(imageX + scaledWidth, imageY, imageX + scaledWidth, imageY + radius);
+      ctx.lineTo(imageX + scaledWidth, imageY + scaledHeight - radius);
+      ctx.quadraticCurveTo(imageX + scaledWidth, imageY + scaledHeight, imageX + scaledWidth - radius, imageY + scaledHeight);
+      ctx.lineTo(imageX + radius, imageY + scaledHeight);
+      ctx.quadraticCurveTo(imageX, imageY + scaledHeight, imageX, imageY + scaledHeight - radius);
+      ctx.lineTo(imageX, imageY + radius);
+      ctx.quadraticCurveTo(imageX, imageY, imageX + radius, imageY);
       ctx.closePath();
       ctx.clip();
 
       // Draw image
-      ctx.drawImage(img, x, y, img.width, img.height);
+      ctx.drawImage(img, imageX, imageY, scaledWidth, scaledHeight);
 
       // Download
       const link = document.createElement('a');
